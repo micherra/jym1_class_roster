@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-#include "student.h"
+#include "student.hpp"
 
 // TODO: Student::setDaysToCompleteCourses
 // TODO: Student::setDegreeProgram
@@ -11,23 +11,28 @@ using namespace std;
 // TODO: Student::print
 
 void Student::setId(string studentId) {
-    this->studentId = studentId;
+  this->studentId = studentId;
 }
 
 void Student::setFirstName(string firstName) {
-    this->firstName = firstName;
+  this->firstName = firstName;
 }
 
 
 void Student::setLastName(string lastName) {
-    this->lastName = lastName;
+  this->lastName = lastName;
 }
 
 void Student::setEmailAddress(string emailAddress) {
-    this->emailAddress = emailAddress;
+  this->emailAddress = emailAddress;
 }
+
 void Student::setAge(int age) {
-    this->age = age;
+  this->age = age;
+}
+
+void Student::setDegreeProgram(DegreeProgram degreeProgram) {
+  this->degreeProgram = degreeProgram;
 }
 
 //void Student::print(Student student) {
@@ -35,21 +40,25 @@ void Student::setAge(int age) {
 //}
 
 string Student::getId() {
-    return this->studentId;
+  return this->studentId;
 }
 
 string Student::getFirstName() {
-    return this->firstName;
+  return this->firstName;
 }
 
 string Student::getLastName() {
-    return this->lastName;
+  return this->lastName;
 }
 
 string Student::getEmailAddress() {
-    return this->emailAddress;
+  return this->emailAddress;
 }
 
 int Student::getAge() {
-    return this->age;
+  return this->age;
+}
+
+DegreeProgram Student::getDegreeProgram() {
+  return this ->degreeProgram;
 }

@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		321E62852984927E00A2BA40 /* tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 321E62832984927E00A2BA40 /* tests.cpp */; };
 		32590D452982399B00C09BE1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32590D442982399B00C09BE1 /* main.cpp */; };
-		32590D5029833C2F00C09BE1 /* roster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32590D4B29833C2F00C09BE1 /* roster.cpp */; };
 		32590D5129833C2F00C09BE1 /* student.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32590D4F29833C2F00C09BE1 /* student.cpp */; };
+		32FAC4A22983928100D73F82 /* roster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32FAC4A02983928100D73F82 /* roster.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,13 +26,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		321E62832984927E00A2BA40 /* tests.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = tests.cpp; sourceTree = "<group>"; tabWidth = 2; };
+		321E62842984927E00A2BA40 /* tests.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tests.hpp; sourceTree = "<group>"; };
+		321E62862984A5AE00A2BA40 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		32590D412982399B00C09BE1 /* jym1_class_roster */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jym1_class_roster; sourceTree = BUILT_PRODUCTS_DIR; };
-		32590D442982399B00C09BE1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		32590D4B29833C2F00C09BE1 /* roster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = roster.cpp; sourceTree = "<group>"; };
-		32590D4C29833C2F00C09BE1 /* roster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = roster.h; sourceTree = "<group>"; };
-		32590D4D29833C2F00C09BE1 /* student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = student.h; sourceTree = "<group>"; };
-		32590D4E29833C2F00C09BE1 /* degree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = degree.h; sourceTree = "<group>"; };
-		32590D4F29833C2F00C09BE1 /* student.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = student.cpp; sourceTree = "<group>"; };
+		32590D442982399B00C09BE1 /* main.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 2; };
+		32590D4D29833C2F00C09BE1 /* student.hpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = student.hpp; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
+		32590D4E29833C2F00C09BE1 /* degree.hpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = degree.hpp; sourceTree = "<group>"; tabWidth = 2; };
+		32590D4F29833C2F00C09BE1 /* student.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = student.cpp; sourceTree = "<group>"; tabWidth = 2; };
+		32FAC4A02983928100D73F82 /* roster.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = roster.cpp; sourceTree = "<group>"; };
+		32FAC4A12983928100D73F82 /* roster.hpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = roster.hpp; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 1; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,7 @@
 		32590D382982399B00C09BE1 = {
 			isa = PBXGroup;
 			children = (
+				321E62862984A5AE00A2BA40 /* .gitignore */,
 				32590D432982399B00C09BE1 /* jym1_class_roster */,
 				32590D422982399B00C09BE1 /* Products */,
 			);
@@ -64,12 +69,14 @@
 		32590D432982399B00C09BE1 /* jym1_class_roster */ = {
 			isa = PBXGroup;
 			children = (
-				32590D4E29833C2F00C09BE1 /* degree.h */,
-				32590D4B29833C2F00C09BE1 /* roster.cpp */,
-				32590D4C29833C2F00C09BE1 /* roster.h */,
+				32590D4E29833C2F00C09BE1 /* degree.hpp */,
 				32590D4F29833C2F00C09BE1 /* student.cpp */,
-				32590D4D29833C2F00C09BE1 /* student.h */,
+				32590D4D29833C2F00C09BE1 /* student.hpp */,
 				32590D442982399B00C09BE1 /* main.cpp */,
+				32FAC4A02983928100D73F82 /* roster.cpp */,
+				32FAC4A12983928100D73F82 /* roster.hpp */,
+				321E62832984927E00A2BA40 /* tests.cpp */,
+				321E62842984927E00A2BA40 /* tests.hpp */,
 			);
 			path = jym1_class_roster;
 			sourceTree = "<group>";
@@ -131,8 +138,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32590D5029833C2F00C09BE1 /* roster.cpp in Sources */,
 				32590D5129833C2F00C09BE1 /* student.cpp in Sources */,
+				321E62852984927E00A2BA40 /* tests.cpp in Sources */,
+				32FAC4A22983928100D73F82 /* roster.cpp in Sources */,
 				32590D452982399B00C09BE1 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

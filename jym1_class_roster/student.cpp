@@ -1,14 +1,9 @@
-#include <iostream>
-#include <string>
-using namespace std;
-
 #include "student.hpp"
 
-// TODO: Student::setDaysToCompleteCourses
-// TODO: Student::setDegreeProgram
-// TODO: Student::getDaysToCompleteCourses
-// TODO: Student::getDegreeProgram
-// TODO: Student::print
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
 
 void Student::setId(string studentId) {
   this->studentId = studentId;
@@ -18,7 +13,6 @@ void Student::setFirstName(string firstName) {
   this->firstName = firstName;
 }
 
-
 void Student::setLastName(string lastName) {
   this->lastName = lastName;
 }
@@ -27,17 +21,21 @@ void Student::setEmailAddress(string emailAddress) {
   this->emailAddress = emailAddress;
 }
 
-void Student::setAge(int age) {
+void Student::setAge(unsigned int age) {
   this->age = age;
+}
+
+void Student::setDaysToCompleteCourses(
+  unsigned int daysInCourse1,
+  unsigned int daysInCourse2,
+  unsigned int daysInCourse3
+) {
+  this->daysToCompleteCourses = { daysInCourse1, daysInCourse2, daysInCourse3 };
 }
 
 void Student::setDegreeProgram(DegreeProgram degreeProgram) {
   this->degreeProgram = degreeProgram;
 }
-
-//void Student::print(Student student) {
-//
-//}
 
 string Student::getId() {
   return this->studentId;
@@ -55,10 +53,35 @@ string Student::getEmailAddress() {
   return this->emailAddress;
 }
 
-int Student::getAge() {
+unsigned int Student::getAge() {
   return this->age;
 }
 
-DegreeProgram Student::getDegreeProgram() {
-  return this ->degreeProgram;
+vector<unsigned> Student::getDaysToCompleteCourses() {
+  return this->daysToCompleteCourses;
+}
+
+string Student::getDegreeProgram() {
+  return degreeName[this->degreeProgram];
+}
+
+void Student::print() {
+  cout <<
+  this->getId() <<
+  this->TAB <<
+  "First Name: " <<
+  this->getFirstName() <<
+  this->TAB <<
+  "Last Name: " <<
+  this->getLastName() <<
+  this->TAB <<
+  "Age: " <<
+  this->getAge() <<
+  this->TAB <<
+  "daysInCourse: " <<
+  this->getDaysToCompleteCourses().data() <<
+  this->TAB <<
+  "Degree Program: " <<
+  this->getDegreeProgram() <<
+  endl;
 }

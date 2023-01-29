@@ -3,7 +3,8 @@
 
 #include "degree.hpp"
 #include <string>
-using namespace std;
+#include <vector>
+using namespace::std;
 
 /** Outside the scope of this project but could be better optimized to use an object to represent student state. **/
 class Student {
@@ -12,31 +13,36 @@ private:
   string firstName;
   string lastName;
   string emailAddress;
-  int age;
-  //    array<int> daysToCompleteCourses;
+  unsigned int age;
+  vector<unsigned int> daysToCompleteCourses;
   DegreeProgram degreeProgram;
   
-public:
-  Student(
-          string studentId,
-          string firstName,
-          string lastName,
-          string emailAddress,
-          int age,
-          int daysInCourse1,
-          int daysInCourse2,
-          int daysInCourse3,
-          DegreeProgram degreeProgram
-          ) {
-    this->studentId = studentId;
-    this->firstName = firstName;
-    this->lastName = lastName;
-    this->emailAddress = emailAddress;
-    this->age = age;
-    this->degreeProgram = degreeProgram;
-    
-  }
+  string getMessage();
   
+public:
+  string const TAB = "/t";
+  
+  /// Member initialization
+  Student(
+    const string &studentId,
+    const string &firstName,
+    const string &lastName,
+    const string &emailAddress,
+    const unsigned int age,
+    const vector<unsigned int> &daysToCompleteCourses,
+    DegreeProgram degreeProgram
+  ) :
+    studentId(studentId),
+    firstName(firstName),
+    lastName(lastName),
+    emailAddress(emailAddress),
+    age(age),
+    daysToCompleteCourses(daysToCompleteCourses),
+    degreeProgram(degreeProgram) {}
+  
+//  /// Destructor
+//  ~Student();
+//
   /**
    Sets studentId for the class instance.
    @parameter studentId: Student identification
@@ -65,17 +71,25 @@ public:
    Sets age for the class instance.
    @parameter age: Age of the student
    **/
-  void setAge(int age);
+  void setAge(unsigned int age);
   
-  // TODO: setDaysToCompleteCourses
+  /**
+   Sets array representing the time spent in three courses for the class instance.
+   @parameter daysInCourse1: Numeric days spent in course
+   @parameter daysInCourse2: Numeric days spent in course
+   @parameter daysInCourse3: Numeric days spent in course
+   **/
+  void setDaysToCompleteCourses(
+    unsigned int daysInCourse1,
+    unsigned int daysInCourse2,
+    unsigned int daysInCourse3
+  );
   
   /**
    Sets degree program for the class instance.
    @parameter degreeProgram: Degree program associated to student
    **/
   void setDegreeProgram(DegreeProgram degreeProgram);
-  
-  void print(Student student);
   
   /**
    Get student Id.
@@ -102,17 +116,27 @@ public:
   string getEmailAddress();
   
   /**
-   Gets student's  age.
+   Gets student's age.
    @returns age: Age of the student
    **/
-  int getAge();
-  
+  unsigned int getAge();
   
   /**
-   Gets student's  degree program..
-   @returns degreeProgram:Student's degree program
+   Gets student's days to complete three courses.
+   @returns daysToCompleteCourses: Student's days to complete three courses
    **/
-  DegreeProgram getDegreeProgram();
+  vector<unsigned int> getDaysToCompleteCourses();
+  
+  /**
+   Gets student's degree program.
+   @returns degreeProgram: Student's degree program
+   **/
+  string getDegreeProgram();
+  
+  /**
+   Prints a tab seperated string of the Student's data.
+   **/
+  void print();
 };
 
 #endif

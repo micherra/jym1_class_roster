@@ -27,7 +27,7 @@
 
 /* Begin PBXFileReference section */
 		321E62832984927E00A2BA40 /* tests.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = tests.cpp; sourceTree = "<group>"; tabWidth = 2; };
-		321E62842984927E00A2BA40 /* tests.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tests.hpp; sourceTree = "<group>"; };
+		321E62842984927E00A2BA40 /* tests.hpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = tests.hpp; sourceTree = "<group>"; tabWidth = 2; };
 		321E62862984A5AE00A2BA40 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		32590D412982399B00C09BE1 /* jym1_class_roster */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jym1_class_roster; sourceTree = BUILT_PRODUCTS_DIR; };
 		32590D442982399B00C09BE1 /* main.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 2; };

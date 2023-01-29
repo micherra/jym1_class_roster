@@ -1,7 +1,3 @@
-#include <iostream>
-#include "degree.hpp"
-#include "student.hpp"
-#include "roster.hpp"
 #include "tests.hpp"
 
 #include <string>

@@ -12,7 +12,7 @@ using namespace std;
 void TestRunner::expect(string testCase, bool result) {
   string const color = result ? GREEN : RED;
   string const status = result ? PASSED : FAILED;
-  cout << testCase << boolalpha << color << status << RESET << endl;
+  cout << testCase << color << status << RESET << endl;
 }
 
 void TestRunner::testStudent() {
@@ -37,6 +37,8 @@ void TestRunner::testStudent() {
   );
   
   expect("Gets student's degree program => ", student.getDegreeProgram() == "Security");
+  
+  expect("Get message outputs student decription in the expected format => ", student.getMessage() == TestRunner::testOutput);
   
   student.setId("A2");
   expect("Sets student's id => ", student.getId() == "A2");

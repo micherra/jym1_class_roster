@@ -9,6 +9,7 @@ using namespace::std;
 /** Outside the scope of this project but could be better optimized to use an object to represent student state. **/
 class Student {
 private:
+  string const TAB = "\t";
   string studentId;
   string firstName;
   string lastName;
@@ -17,11 +18,10 @@ private:
   vector<unsigned int> daysToCompleteCourses;
   DegreeProgram degreeProgram;
   
-  string getMessage();
+  string toString(vector<unsigned int> vector);
+  string toString(unsigned int num);
   
 public:
-  string const TAB = "/t";
-  
   /// Member initialization
   Student(
     const string &studentId,
@@ -132,6 +132,12 @@ public:
    @returns degreeProgram: Student's degree program
    **/
   string getDegreeProgram();
+
+  /**
+   Helper function for print.
+   @returns Description of student
+   **/
+  string getMessage();
   
   /**
    Prints a tab seperated string of the Student's data.

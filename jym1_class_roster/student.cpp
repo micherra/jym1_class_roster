@@ -3,6 +3,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <iterator>
+#include <sstream>
+#include <algorithm>
 using namespace std;
 
 void Student::setId(string studentId) {
@@ -65,23 +68,38 @@ string Student::getDegreeProgram() {
   return degreeName[this->degreeProgram];
 }
 
+string Student::toString(unsigned int num) {
+  return to_string(num);
+}
+
+string Student::toString(vector<unsigned int> vector) {
+  string result = "{ ";
+  for (int i = 0; i < vector.size(); i += 1) {
+    result += toString(vector.at(i));
+
+    if (i != vector.size() - 1) {
+      result += ", ";
+    }
+    
+  }
+  result += " }";
+  return result;
+}
+
+string Student::getMessage() {
+  return this->getId()
+  + this->TAB
+  + "First Name: " + this->getFirstName()
+  + this->TAB
+  + "Last Name: " + this->getLastName()
+  + this->TAB
+  + "Age: " + toString(this->getAge())
+  + this->TAB +
+  + "daysInCourse: " + toString(this->daysToCompleteCourses)
+  + this->TAB
+  +  "Degree Program: " +  this->getDegreeProgram();
+}
+
 void Student::print() {
-  cout <<
-  this->getId() <<
-  this->TAB <<
-  "First Name: " <<
-  this->getFirstName() <<
-  this->TAB <<
-  "Last Name: " <<
-  this->getLastName() <<
-  this->TAB <<
-  "Age: " <<
-  this->getAge() <<
-  this->TAB <<
-  "daysInCourse: " <<
-  this->getDaysToCompleteCourses().data() <<
-  this->TAB <<
-  "Degree Program: " <<
-  this->getDegreeProgram() <<
-  endl;
+  cout << Student::getMessage() << endl;
 }

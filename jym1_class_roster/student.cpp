@@ -1,11 +1,8 @@
 #include "student.hpp"
 
 #include <iostream>
-#include <vector>
 #include <string>
-#include <iterator>
-#include <sstream>
-#include <algorithm>
+#include <vector>
 using namespace std;
 
 void Student::setId(string studentId) {

@@ -6,23 +6,23 @@
 using namespace std;
 
 void Student::setId(string studentId) {
-  this->studentId = studentId;
+  this->studentId_ = studentId;
 }
 
 void Student::setFirstName(string firstName) {
-  this->firstName = firstName;
+  this->firstName_ = firstName;
 }
 
 void Student::setLastName(string lastName) {
-  this->lastName = lastName;
+  this->lastName_ = lastName;
 }
 
 void Student::setEmailAddress(string emailAddress) {
-  this->emailAddress = emailAddress;
+  this->emailAddress_ = emailAddress;
 }
 
 void Student::setAge(unsigned int age) {
-  this->age = age;
+  this->age_ = age;
 }
 
 void Student::setDaysToCompleteCourses(
@@ -30,49 +30,49 @@ void Student::setDaysToCompleteCourses(
   unsigned int daysInCourse2,
   unsigned int daysInCourse3
 ) {
-  this->daysToCompleteCourses = { daysInCourse1, daysInCourse2, daysInCourse3 };
+  this->daysToCompleteCourses_ = { daysInCourse1, daysInCourse2, daysInCourse3 };
 }
 
 void Student::setDegreeProgram(DegreeProgram degreeProgram) {
-  this->degreeProgram = degreeProgram;
+  this->degreeProgram_ = degreeProgram;
 }
 
-string Student::getId() {
-  return this->studentId;
+const string Student::getId() {
+  return this->studentId_;
 }
 
 string Student::getFirstName() {
-  return this->firstName;
+  return this->firstName_;
 }
 
 string Student::getLastName() {
-  return this->lastName;
+  return this->lastName_;
 }
 
 string Student::getEmailAddress() {
-  return this->emailAddress;
+  return this->emailAddress_;
 }
 
 unsigned int Student::getAge() {
-  return this->age;
+  return this->age_;
 }
 
 vector<unsigned> Student::getDaysToCompleteCourses() {
-  return this->daysToCompleteCourses;
+  return this->daysToCompleteCourses_;
 }
 
 string Student::getDegreeProgram() {
-  return degreeName[this->degreeProgram];
+  return degreeName[this->degreeProgram_];
 }
 
-string Student::toString(unsigned int num) {
+string Student::toString_(unsigned int num) {
   return to_string(num);
 }
 
-string Student::toString(vector<unsigned int> vector) {
+string Student::toString_(vector<unsigned int> vector) {
   string result = "{ ";
   for (int i = 0; i < vector.size(); i += 1) {
-    result += toString(vector.at(i));
+    result += toString_(vector.at(i));
 
     if (i != vector.size() - 1) {
       result += ", ";
@@ -85,15 +85,15 @@ string Student::toString(vector<unsigned int> vector) {
 
 string Student::getMessage() {
   return this->getId()
-  + this->TAB
+  + this->TAB_
   + "First Name: " + this->getFirstName()
-  + this->TAB
+  + this->TAB_
   + "Last Name: " + this->getLastName()
-  + this->TAB
-  + "Age: " + toString(this->getAge())
-  + this->TAB +
-  + "daysInCourse: " + toString(this->daysToCompleteCourses)
-  + this->TAB
+  + this->TAB_
+  + "Age: " + toString_(this->getAge())
+  + this->TAB_ +
+  + "daysInCourse: " + toString_(this->getDaysToCompleteCourses())
+  + this->TAB_
   +  "Degree Program: " +  this->getDegreeProgram();
 }
 

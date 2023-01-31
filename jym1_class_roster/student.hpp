@@ -9,17 +9,17 @@ using namespace::std;
 /** Outside the scope of this project but could be better optimized to use an object to represent student state. **/
 class Student {
 private:
-  string const TAB = "\t";
-  string studentId;
-  string firstName;
-  string lastName;
-  string emailAddress;
-  unsigned int age;
-  vector<unsigned int> daysToCompleteCourses;
-  DegreeProgram degreeProgram;
+  string const TAB_ = "\t";
+  string studentId_;
+  string firstName_;
+  string lastName_;
+  string emailAddress_;
+  unsigned int age_;
+  vector<unsigned int> daysToCompleteCourses_;
+  DegreeProgram degreeProgram_;
   
-  string toString(vector<unsigned int> vector);
-  string toString(unsigned int num);
+  string toString_(vector<unsigned int> vector);
+  string toString_(unsigned int num);
   
 public:
   /// Member initialization
@@ -32,13 +32,13 @@ public:
     const vector<unsigned int> &daysToCompleteCourses,
     DegreeProgram degreeProgram
   ) :
-    studentId(studentId),
-    firstName(firstName),
-    lastName(lastName),
-    emailAddress(emailAddress),
-    age(age),
-    daysToCompleteCourses(daysToCompleteCourses),
-    degreeProgram(degreeProgram) {}
+    studentId_(studentId),
+    firstName_(firstName),
+    lastName_(lastName),
+    emailAddress_(emailAddress),
+    age_(age),
+    daysToCompleteCourses_(daysToCompleteCourses),
+    degreeProgram_(degreeProgram) {}
   
 //  /// Destructor
 //  ~Student();
@@ -95,7 +95,7 @@ public:
    Get student Id.
    @returns studentId: Student identification
    **/
-  string getId();
+  const string getId();
   
   /**
    Gets student's first name.

@@ -5,6 +5,26 @@
 #include <vector>
 using namespace std;
 
+/// Private methods
+const string Student::toString_(unsigned int num) const {
+  return to_string(num);
+}
+
+const string Student::toString_(vector<unsigned int> vector) const {
+  string result = "{ ";
+  for (int i = 0; i < vector.size(); i += 1) {
+    result += toString_(vector.at(i));
+
+    if (i != vector.size() - 1) {
+      result += ", ";
+    }
+    
+  }
+  result += " }";
+  return result;
+}
+
+/// Public Methods
 void Student::setId(string studentId) {
   this->studentId_ = studentId;
 }
@@ -37,66 +57,48 @@ void Student::setDegreeProgram(DegreeProgram degreeProgram) {
   this->degreeProgram_ = degreeProgram;
 }
 
-const string Student::getId() {
+const string Student::getId() const {
   return this->studentId_;
 }
 
-string Student::getFirstName() {
+const string Student::getFirstName() const {
   return this->firstName_;
 }
 
-string Student::getLastName() {
+const string Student::getLastName() const {
   return this->lastName_;
 }
 
-string Student::getEmailAddress() {
+const string Student::getEmailAddress() const {
   return this->emailAddress_;
 }
 
-unsigned int Student::getAge() {
+const unsigned int Student::getAge() const {
   return this->age_;
 }
 
-vector<unsigned> Student::getDaysToCompleteCourses() {
+const vector<unsigned> Student::getDaysToCompleteCourses() const {
   return this->daysToCompleteCourses_;
 }
 
-string Student::getDegreeProgram() {
+const string Student::getDegreeProgram() const {
   return degreeName[this->degreeProgram_];
 }
 
-string Student::toString_(unsigned int num) {
-  return to_string(num);
-}
-
-string Student::toString_(vector<unsigned int> vector) {
-  string result = "{ ";
-  for (int i = 0; i < vector.size(); i += 1) {
-    result += toString_(vector.at(i));
-
-    if (i != vector.size() - 1) {
-      result += ", ";
-    }
-    
-  }
-  result += " }";
-  return result;
-}
-
-string Student::getMessage() {
+const string Student::getMessage() const {
   return this->getId()
   + this->TAB_
   + "First Name: " + this->getFirstName()
   + this->TAB_
   + "Last Name: " + this->getLastName()
   + this->TAB_
-  + "Age: " + toString_(this->getAge())
+  + "Age: " + Student::toString_(this->getAge())
   + this->TAB_ +
   + "daysInCourse: " + toString_(this->getDaysToCompleteCourses())
   + this->TAB_
   +  "Degree Program: " +  this->getDegreeProgram();
 }
 
-void Student::print() {
+const void Student::print() const {
   cout << Student::getMessage() << endl;
 }

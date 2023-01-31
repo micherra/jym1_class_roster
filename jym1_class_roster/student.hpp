@@ -18,8 +18,8 @@ private:
   vector<unsigned int> daysToCompleteCourses_;
   DegreeProgram degreeProgram_;
   
-  string toString_(vector<unsigned int> vector);
-  string toString_(unsigned int num);
+ const string toString_(vector<unsigned int> vector) const;
+ const string toString_(unsigned int num) const;
   
 public:
   /// Member initialization
@@ -40,9 +40,6 @@ public:
     daysToCompleteCourses_(daysToCompleteCourses),
     degreeProgram_(degreeProgram) {}
   
-//  /// Destructor
-//  ~Student();
-//
   /**
    Sets studentId for the class instance.
    @parameter studentId: Student identification
@@ -95,54 +92,54 @@ public:
    Get student Id.
    @returns studentId: Student identification
    **/
-  const string getId();
+  const string getId() const;
   
   /**
    Gets student's first name.
    @returns firstName: First name of student
    **/
-  string getFirstName();
+  const string getFirstName() const;
   
   /**
    Gets student's last name.
    @returns lastName: Last name of student
    **/
-  string getLastName();
+  const string getLastName() const;
   
   /**
    Gets student's email address.
    @returns email: Email address associated to student
    **/
-  string getEmailAddress();
+  const string getEmailAddress() const;
   
   /**
    Gets student's age.
    @returns age: Age of the student
    **/
-  unsigned int getAge();
+  const unsigned int getAge() const;
   
   /**
    Gets student's days to complete three courses.
    @returns daysToCompleteCourses: Student's days to complete three courses
    **/
-  vector<unsigned int> getDaysToCompleteCourses();
+  const vector<unsigned int> getDaysToCompleteCourses() const;
   
   /**
    Gets student's degree program.
    @returns degreeProgram: Student's degree program
    **/
-  string getDegreeProgram();
+  const string getDegreeProgram() const;
 
   /**
    Helper function for print.
    @returns Description of student
    **/
-  string getMessage();
+  const string getMessage() const;
   
   /**
    Prints a tab seperated string of the Student's data.
    **/
-  void print();
+  const void print() const;
 };
 
 #endif

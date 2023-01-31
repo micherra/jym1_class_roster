@@ -2,12 +2,14 @@
 #define roster_hpp
 
 #include "student.hpp"
+#include "degree.hpp"
 
 #include <string>
+using namespace::std;
 
 class Roster {
 private:
-  Student* classRoster;
+  const Student* classRoster[5];
   
   /**
     Determines if the provided student address is valid, A valid email should include an at sign ('@') and period ('.') and should not include a space (' ').
@@ -15,7 +17,21 @@ private:
   bool validateEmail(string emailAddress);
   
   
+  // add new element to back
+  void push(Student student);
+  
+  // increases size size == capacity
+  void reallocate();
+  
+  // shift elements up on delete
+  void remove(Student student);
+  
 public:
+  Roster() {
+    for (int i = 0; i < 5; i += 1) {
+      classRoster[i] = nullptr;
+    }
+  }
   
   /**
    Sets the instance variables provided to create a Student and updates the roster.
@@ -30,16 +46,22 @@ public:
    @parameter degreeprogram: Degree Program of student
    */
   void add(
-           string studentID,
-           string firstName,
-           string lastName,
-           string emailAddress,
-           int age,
-           int daysInCourse1,
-           int daysInCourse2,
-           int daysInCourse3,
-           DegreeProgram degreeprogram
-           );
+    string studentID,
+    string firstName,
+    string lastName,
+    string emailAddress,
+    unsigned int age,
+    unsigned int daysInCourse1,
+    unsigned int daysInCourse2,
+    unsigned int daysInCourse3,
+    DegreeProgram degreeprogram
+  );
+  
+  /**
+   Removes students from the roster by student ID. If the student ID does not exist, the function prints an error message indicating that the student was not found.
+   @parameter studentId: Student identification
+   */
+  void remove(string studentId);
   
   /**
    Iterates over the class roster and invokes the print method for each student.
@@ -62,6 +84,9 @@ public:
    @parameter degreeprogram: Degree Program of students
    */
   void printByDegreeProgram(DegreeProgram degreeProgram);
+  
+  // determine number of elements in classRoster
+  int count();
 };
 
 #endif

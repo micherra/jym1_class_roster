@@ -17,6 +17,8 @@ private:
 
 public:
   void testStudent();
+  
+  void testRoster();
 };
 
 #endif

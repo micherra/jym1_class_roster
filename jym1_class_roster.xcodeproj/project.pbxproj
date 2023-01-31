@@ -34,7 +34,7 @@
 		32590D4D29833C2F00C09BE1 /* student.hpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = student.hpp; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		32590D4E29833C2F00C09BE1 /* degree.hpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = degree.hpp; sourceTree = "<group>"; tabWidth = 2; };
 		32590D4F29833C2F00C09BE1 /* student.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = student.cpp; sourceTree = "<group>"; tabWidth = 2; };
-		32FAC4A02983928100D73F82 /* roster.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = roster.cpp; sourceTree = "<group>"; };
+		32FAC4A02983928100D73F82 /* roster.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = roster.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		32FAC4A12983928100D73F82 /* roster.hpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = roster.hpp; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 1; };
 /* End PBXFileReference section */
 

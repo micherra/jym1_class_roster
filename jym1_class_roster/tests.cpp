@@ -16,7 +16,7 @@ void TestRunner::expect(string testCase, bool result) {
 }
 
 void TestRunner::testStudent() {
-  Student student = this -> student;
+  Student student = this->student;
   
   cout << "Running Student Test Suite\n";
   
@@ -56,7 +56,7 @@ void TestRunner::testStudent() {
   expect("Sets student's age => ", student.getAge() == 25);
   
   student.setDaysToCompleteCourses(35, 40, 45);
-  expect("Sets student's age => ",
+  expect("Sets student's days to complete course => ",
     student.getDaysToCompleteCourses().at(0) == 35 &
     student.getDaysToCompleteCourses().at(1) == 40 &
     student.getDaysToCompleteCourses().at(2) == 45
@@ -65,3 +65,17 @@ void TestRunner::testStudent() {
   student.setDegreeProgram(NETWORK);
   expect("Sets student's degree program => ", student.getDegreeProgram() == "Network");
 }
+
+void TestRunner::testRoster() {
+  Roster roster = Roster();
+  
+  cout << "\nRunning Roster Test Suite\n";
+  
+  expect("Roster initializes with a null pointer array => ", roster.count() == 0);
+  
+  roster.add("A1", "John", "Smith", "John1989@gm", 20, 30, 35, 40, SECURITY);
+  expect("When a student is added to the roster the count increases by 1 => ", roster.count() == 1);
+}
+
+// Test Utils
+//int every(Roster roster)

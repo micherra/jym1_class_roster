@@ -58,7 +58,9 @@ void Student::setDegreeProgram(DegreeProgram degreeProgram) {
 }
 
 const string Student::getId() const {
-  return this->studentId_;
+  return [this](){
+    return this->studentId_;
+  }();
 }
 
 const string Student::getFirstName() const {

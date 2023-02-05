@@ -11,8 +11,16 @@ void Roster::push_(Student* student) {
   this->classRoster_[this->count()] = student;
 }
 
+void Roster::print_(const Student *student) {
+  student->print();
+}
+
 bool Roster::byId_(const Student* student, const string& studentId) {
   return student->getId() == studentId;
+}
+
+bool Roster::byDegreeProgram_(const Student *student, const DegreeProgram &degreeProgram) {
+  return toEnum(student->getDegreeProgram()) == degreeProgram;
 }
 
 void Roster::remove_(const Student* student) {
@@ -33,6 +41,15 @@ void Roster::remove_(const Student* student) {
   }
 }
 
+bool Roster::validateEmail_(const Student* student) {
+  string emailAddress = student->getEmailAddress();
+  if (!emailAddress.find(" ") && emailAddress.substr(emailAddress.find("@")) != "") {
+    return static_cast<bool>(emailAddress.find("."));
+  } else {
+    return false;
+  }
+}
+
 /// Public methods
 int Roster::count() {
   int i = 0;
@@ -41,6 +58,20 @@ int Roster::count() {
   }
   return i;
 }
+
+//void Roster::parseAndAddStudents(array<string, 5> studentData) {
+//  vector<string> data;
+//  string d;
+//  for (int i=0; i < 5; i += 1) {
+//    string currentInput = studentData[i];
+//    stringstream ss(currentInput);
+//    while(getline(ss, d, ',')) {
+//      data.push_back(d);
+//    }
+//    this->add(data[0], data[1], data[2], data[3], stoi(data[4]), stoi(data[5]), stoi(data[6]), stoi(data[7]), degreeNameMap.find(data[9])->second);
+//    data.clear();
+//  }
+//}
 
 void Roster::add(
   string studentID,
@@ -66,7 +97,7 @@ void Roster::add(
 }
 
 void Roster::remove(string studentId) {
-  const Student* student = this->find_<string>(this->classRoster_, studentId, Roster::byId_);
+  const Student* student = this->find_<string>(this->classRoster_, studentId, this->byId_);
   if (student == nullptr) {
     cout << "Id not found" << endl;
   } else {
@@ -74,4 +105,28 @@ void Roster::remove(string studentId) {
     delete student;
     this->count();
   }
+}
+
+void Roster::printAll() {
+  if (this->count() == 0) {
+    cout << "No students in roster." << endl;
+  }
+  
+  this->forEach_(this->classRoster_, this->print_);
+}
+
+void Roster::printInvalidEmails() {
+  if (this->count() == 0) {
+    cout << "No students in roster." << endl;
+  }
+  
+  vector<const Student*> invalidStudents = this->filter_(this->classRoster_, this->validateEmail_);
+  
+  this->forEach_(this->classRoster_, this->print_);
+}
+
+void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+  vector<const Student*> inDegreeProgram = this->filter_(this->classRoster_, degreeProgram, this->byDegreeProgram_);
+  
+  this->forEach_(inDegreeProgram, this->print_);
 }

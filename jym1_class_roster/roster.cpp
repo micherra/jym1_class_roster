@@ -4,6 +4,7 @@
 #include "degree.hpp"
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -12,8 +13,12 @@ void Roster::push_(Student* student) {
   this->classRoster_[this->count()] = student;
 }
 
-void Roster::print_(const Student *student) {
+void Roster::printAll_(const Student *student) {
   student->print();
+}
+
+void Roster::printEmail_(const Student *student) {
+  cout << student->getId() << "\t" << student->getEmailAddress() << endl;
 }
 
 bool Roster::byId_(const Student* student, const string& studentId) {
@@ -22,6 +27,10 @@ bool Roster::byId_(const Student* student, const string& studentId) {
 
 bool Roster::byDegreeProgram_(const Student *student, const DegreeProgram &degreeProgram) {
   return toEnum(student->getDegreeProgram()) == degreeProgram;
+}
+
+string Roster::getId_(const Student* student) {
+  return student->getId();
 }
 
 void Roster::remove_(const Student* student) {
@@ -44,11 +53,23 @@ void Roster::remove_(const Student* student) {
 
 bool Roster::validateEmail_(const Student* student) {
   string emailAddress = student->getEmailAddress();
-  if (!emailAddress.find(" ") && emailAddress.substr(emailAddress.find("@")) != "") {
-    return static_cast<bool>(emailAddress.find("."));
-  } else {
+  if (
+      emailAddress.find(" ") == string::npos &&
+      emailAddress.find("@") != string::npos &&
+      emailAddress.find(".") != string::npos
+  ) {
     return false;
+  } else {
+    return true;
   }
+}
+
+int Roster::count_(const Student *(&roster)[5]) {
+  int i = 0;
+  while(roster[i] != nullptr) {
+    i += 1;
+  }
+  return i;
 }
 
 /// Public methods
@@ -60,19 +81,23 @@ int Roster::count() {
   return i;
 }
 
-//void Roster::parseAndAddStudents(array<string, 5> studentData) {
-//  vector<string> data;
-//  string d;
-//  for (int i=0; i < 5; i += 1) {
-//    string currentInput = studentData[i];
-//    stringstream ss(currentInput);
-//    while(getline(ss, d, ',')) {
-//      data.push_back(d);
-//    }
-//    this->add(data[0], data[1], data[2], data[3], stoi(data[4]), stoi(data[5]), stoi(data[6]), stoi(data[7]), degreeNameMap.find(data[9])->second);
-//    data.clear();
-//  }
-//}
+vector<string> Roster::getIds() {
+  return this->map_<string>(this->classRoster_, this->getId_);
+}
+
+void Roster::parseAndAddStudents(const string studentData[]) {
+  vector<string> data;
+  string d;
+  for (int i=0; i < 5; i += 1) {
+    string currentInput = studentData[i];
+    stringstream ss(currentInput);
+    while(getline(ss, d, ',')) {
+      data.push_back(d);
+    }
+    this->add(data[0], data[1], data[2], data[3], stoi(data[4]), stoi(data[5]), stoi(data[6]), stoi(data[7]), toEnum(data[8]));
+    data.clear();
+  }
+}
 
 void Roster::add(
   string studentID,
@@ -113,7 +138,7 @@ void Roster::printAll() {
     cout << "No students in roster." << endl;
   }
   
-  this->forEach_(this->classRoster_, this->print_);
+  this->forEach_(this->classRoster_, this->printAll_);
 }
 
 void Roster::printAverageDaysInCourse(string studentId) {
@@ -132,14 +157,14 @@ void Roster::printInvalidEmails() {
   if (this->count() == 0) {
     cout << "No students in roster." << endl;
   }
-  
   vector<const Student*> invalidStudents = this->filter_(this->classRoster_, this->validateEmail_);
   
-  this->forEach_(this->classRoster_, this->print_);
+  this->forEach_(invalidStudents, this->printEmail_);
 }
 
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+  
   vector<const Student*> inDegreeProgram = this->filter_(this->classRoster_, degreeProgram, this->byDegreeProgram_);
   
-  this->forEach_(inDegreeProgram, this->print_);
+  this->forEach_(inDegreeProgram, this->printAll_);
 }

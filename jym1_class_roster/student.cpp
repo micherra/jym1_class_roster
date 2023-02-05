@@ -24,6 +24,10 @@ const string Student::toString_(vector<unsigned int> vector) const {
   return result;
 }
 
+const string Student::toString_(DegreeProgram degreeProgram) const {
+  return degreeName[degreeProgram];
+}
+
 /// Public Methods
 void Student::setId(string studentId) {
   this->studentId_ = studentId;
@@ -84,7 +88,7 @@ const vector<unsigned> Student::getDaysToCompleteCourses() const {
 }
 
 const string Student::getDegreeProgram() const {
-  return degreeName[this->degreeProgram_];
+  return toString_(this->degreeProgram_);
 }
 
 const string Student::getMessage() const {

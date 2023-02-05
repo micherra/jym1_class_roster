@@ -19,7 +19,7 @@ private:
    */
   static vector<const Student*> filter_(const Student* (&roster)[5],bool (*callback)(const Student* student)) {
     vector<const Student*> filteredRoster;
-    for (int i = 0; i < 5; i += 1) {
+    for (int i = 0; i < Roster::count_(roster); i += 1) {
       const Student* student = roster[i];
       if (student != nullptr && callback(student)) {
         filteredRoster.push_back(student);
@@ -42,7 +42,7 @@ private:
     bool (*callback)(const Student* student, const T& filter)
   ) {
     vector<const Student*> filteredRoster;
-    for (int i = 0; i < 5; i += 1) {
+    for (int i = 0; i < Roster::count_(roster); i += 1) {
       const Student* student = roster[i];
       if (student != nullptr && callback(student, filterValue)) {
         filteredRoster.push_back(student);
@@ -54,10 +54,10 @@ private:
   /**
    Removes students that do not meet the filter criteria applied in the callback
    @parameter roster: Class roster
-   @parameter callback: Function that applies callnack to current student.
+   @parameter callback: Function that applies callback to current student.
    */
   void forEach_(const Student* (&roster)[5], void (*callback)(const Student* student)) {
-    for (int i = 0; i < 5; i += 1) {
+    for (int i = 0; i < Roster::count_(roster); i += 1) {
       const Student* student = roster[i];
       if (student != nullptr) {
         callback(student);
@@ -67,10 +67,10 @@ private:
   /**
    Removes students that do not meet the filter criteria applied in the callback
    @parameter roster: Class roster
-   @parameter callback: Function that applies callnack to current student.
+   @parameter callback: Function that applies callback to current student.
    */
   static void forEach_(vector<const Student*> roster, void (*callback)(const Student* student)) {
-    for (int i = 0; i < 5; i += 1) {
+    for (int i = 0; i < roster.size(); i += 1) {
       const Student* student = roster[i];
       if (student != nullptr) {
         callback(student);
@@ -91,13 +91,35 @@ private:
     const T& filterValue,
     bool (*callback)(const Student* student, const T& filter)
   ) {
-    for (int i = 0; i < 5; i += 1) {
+    for (int i = 0; i < Roster::count_(roster); i += 1) {
       const Student* student = roster[i];
       if (student != nullptr && callback(student, filterValue)) {
         return student;
       }
     }
     return nullptr;
+  }
+  
+  /**
+   Iterates through roster and applies the provided callback on each student.
+   @parameter roster: Class roster
+   @parameter callback: Function that applies callback to current student.
+   @returns Vector of T:  A vector of the results from the applied callback function.
+   */
+  template <typename T>
+  static vector<T> map_(
+    const Student* (&roster)[5],
+    T (*callback)(const Student* student)
+  ) {
+    vector<T> studentRoster;
+    for (int i = 0; i < Roster::count_(roster); i += 1) {
+      const Student* student = roster[i];
+      if (student != nullptr) {
+        auto v = callback(student);
+        studentRoster.push_back(v);
+      }
+    }
+    return studentRoster;
   }
   
   /**
@@ -136,8 +158,31 @@ private:
    */
   static bool validateEmail_(const Student* student);
   
+  /// Getter access
+  /**
+   Retrieves the id of the provided student.
+   @parameter student:  Class instance for a student
+  */
+  static string getId_(const Student* student);
+  
   /// Behavior Functions
-  static void print_(const Student* student);
+  /**
+   Prints information for the provided student.
+   @parameter student:  Class instance for a student
+  */
+  static void printAll_(const Student* student);
+  
+  /**
+   Prints the id and email  for the provided student.
+   @parameter student:  Class instance for a student
+  */
+  static void printEmail_(const Student* student);
+  
+  /**
+   Provide the number students listed in the class roster.
+   @returns count: The number of students in the class roster
+   */
+  static int count_(const Student* (&roster)[5]);
   
 public:
   Roster() {
@@ -146,7 +191,17 @@ public:
     }
   }
   
-  //  void parseAndAddStudents(array<string, 5> studentData);
+  /**
+   Takes a string array of student data and adds each string as Student in the class roster.
+   @parameter studentData;  Studentstring  data must conform to the following structure. "[id]],[firstname],[lastname],[emailaddress],[age], [numberofdaystocomplete3courses],[DegreeProgram]"
+  */
+  void parseAndAddStudents(const string studentData[]);
+  
+  /**
+   Gets the ids of all students in the roster.
+   @returns studentIds: A vactor of student ids.
+   */
+  vector<string> getIds();
   
   /**
    Sets the instance variables provided to create a Student and updates the roster.

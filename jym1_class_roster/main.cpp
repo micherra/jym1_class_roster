@@ -12,6 +12,8 @@ void print(string output) {
 }
 
 void introduce() {
+  print("Course: Scripting and Programming - Applications - C867");
+  print("Programming Language: C++");
 }
 
 int main() {

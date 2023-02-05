@@ -75,7 +75,7 @@ void TestRunner::testRoster() {
   
   roster.add("A1", "John", "Smith", "John1989@gm", 20, 30, 35, 40, SECURITY);
 
-  expect("When a student is added to the roster the count increases by 1 => ", roster.count() == 3);
+  expect("When a student is added to the roster the count increases by 1 => ", roster.count() == 1);
   
   roster.add("A2", "Suzan", "Erickson", "Erickson_1990@gmailcom", 19, 50, 30, 40, NETWORK);
   roster.add("A3", "Jack", "Napoli"," The_lawyer99yahoo.com", 19, 20, 40, 33, SOFTWARE);

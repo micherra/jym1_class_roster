@@ -25,6 +25,7 @@ static const DegreeProgram toEnum(string degreeName) {
     degreeName.begin(),
     [](unsigned char c) { return toupper(c); }
   );
+  
   return degreeNameMap.find(degreeName)->second;
 }
 

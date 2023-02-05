@@ -1,4 +1,5 @@
 #include "roster.hpp"
+#include "roster.hpp"
 #include "student.hpp"
 #include "degree.hpp"
 
@@ -113,6 +114,18 @@ void Roster::printAll() {
   }
   
   this->forEach_(this->classRoster_, this->print_);
+}
+
+void Roster::printAverageDaysInCourse(string studentId) {
+  const Student* student = this->find_<string>(this->classRoster_, studentId, this->byId_);
+  vector<unsigned int> daysInCourse = student->getDaysToCompleteCourses();
+  int sum = 0;
+  
+  for (unsigned int day : daysInCourse) {
+    sum += day;
+  }
+  
+  cout << studentId << "\t" << sum/3 << endl;
 }
 
 void Roster::printInvalidEmails() {
